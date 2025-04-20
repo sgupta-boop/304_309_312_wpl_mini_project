@@ -4,11 +4,12 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 if (!isset($_SESSION['user'])) header("Location: index.php");
 include 'db.php';
+ 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Home - Car Site</title>
     <style>
         :root {
@@ -64,7 +65,7 @@ include 'db.php';
 
         .container {
             max-width: 1200px;
-            margin: 160px auto 2rem;
+            margin: 80px auto 2rem;
             padding: 2rem;
         }
 
@@ -150,6 +151,7 @@ include 'db.php';
             font-size: 20px;
         }
 
+        /* Rating form styles */
         form select[name="rating"] {
             background: var(--secondary);
             color: var(--light);
@@ -179,31 +181,21 @@ include 'db.php';
             margin-top: 10px;
             font-weight: 500;
         }
-
-        .welcome {
-            text-align: center;
-            margin-top: 100px;
-            font-size: 18px;
-            font-weight: 500;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<?php include 'header.php'; ?>
-
 <nav>
     <a href="buy.php">Buy a Car</a>
     <a href="sell.php">Sell a Car</a>
     <a href="compare.php">Compare Cars</a>
+     
     <form method="post" action="logout.php" style="display:inline;">
         <button type="submit">Logout</button>
     </form>
 </nav>
-
-<!-- Welcome Message -->
-
+<?php include 'header.php;'?>
 
 <div class="container">
     <h2>Search Car Parts</h2>
@@ -289,6 +281,5 @@ document.getElementById('ratingForm').onsubmit = function(e) {
     .catch(err => console.error('Error:', err));
 };
 </script>
-
 </body>
 </html>
